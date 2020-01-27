@@ -1,0 +1,277 @@
+BEGIN;
+INSERT INTO PresentationType(Type) 
+VALUES ('Front-end');
+
+INSERT INTO PresentationType(Type) 
+VALUES ('Back-end');
+
+INSERT INTO PresentationType(Type) 
+VALUES ('Basic concepts');
+
+INSERT INTO PresentationType(Type) 
+VALUES ('Technologies');
+
+COMMIT;
+
+BEGIN;
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Google - Web Performance Best Practices',
+		(SELECT ID FROM PresentationType WHERE Type = 'Basic concepts'));
+		
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('HTML5 - част 2 форми',
+		(SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('CSS: layouts, box model',
+		(SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Анимации с CSS с използване на трансформации',
+		(SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('DOM дърво, обхождане и манипулация',
+		(SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('HTML мета-тагове и SEO',
+		(SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('CSS Preprocessor/LESS и SASS',
+		(SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Инструменти за създаване на прототипи на уеб приложения (Wireframe tools)-balsamiq и други - демо',
+		(SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Позициониране',
+		(SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Инструменти за стрес-тестове на уеб приложения',
+		(SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Mockito  в разработката на уеб приложения',
+		(SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Framework7 - разработка на уеб приложения за Android и iOS',
+		(SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('URL rewriting',
+		(SELECT ID FROM PresentationType WHERE Type = 'Basic concepts'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Оценка на javascript приложенията',
+		(SELECT ID FROM PresentationType WHERE Type = 'Basic concepts'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Resemble.js: Анализ и сравнение на изображения посреством JavaScript и HTML. SlimerJS',
+		(SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('CSS Shapes',
+		(SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('HTML Imports',
+		(SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Високопроизводителни анимации за уеб',
+		(SELECT ID FROM PresentationType WHERE Type = 'Basic concepts'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Компресиране на изображения в уеб',
+		(SELECT ID FROM PresentationType WHERE Type = 'Basic concepts'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Shadow DOM 101',
+		(SELECT ID FROM PresentationType WHERE Type = 'Basic concepts'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('PostCSS - преобразуване на CSS с JavaScript',
+		(SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Обектно ориентиран CSS (OOCSS)',
+		(SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Прецизно аудио в Уеб',
+		(SELECT ID FROM PresentationType WHERE Type = 'Basic concepts'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Изграждане на 3D в Уеб',
+		(SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Приложения с PHP и MySql на AWS',
+		(SELECT ID FROM PresentationType WHERE Type = 'Back-end'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Drag and Drop',
+		(SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('MongoDB за уеб приложения. MEAN стек',
+		(SELECT ID FROM PresentationType WHERE Type = 'Back-end'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Web workers',
+		(SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Nginx. Архитектура, инсталиране, конфигуриране, виртуални хостове.',
+		(SELECT ID FROM PresentationType WHERE Type = 'Back-end'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Приложение на видовете UML диаграми за Уеб',
+		(SELECT ID FROM PresentationType WHERE Type = 'Basic concepts'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Mustache и Handlebars темплейти',
+		(SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Oracle JavaScript Extension Toolkit (JET)',
+		(SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Material design',
+		(SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Bulma css framework. Шаблони, примери',
+		(SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('PHP 7+',
+		(SELECT ID FROM PresentationType WHERE Type = 'Back-end'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Foundation framework',
+		(SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Hypertext Transfer Protocol (HTTP/1.1): Authentication',
+		(SELECT ID FROM PresentationType WHERE Type = 'Basic concepts'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Laravel Web Framework',
+		(SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('WebVTT (Web Video Text Tracks)',
+		(SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('JSON Web Token (JWT), JSON Web Signature (JWS), JSON Web Encryption (JWE), JSON Web Algorithms (JWA)',
+		(SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Разгръщане на уеб приложения с Apache/Php под Docker под Windows',
+		(SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('WebAssembly-основи',
+		(SELECT ID FROM PresentationType WHERE Type = 'Basic concepts'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('GraphQL - принципи. Интеграция с Php',
+		(SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation(Theme, Ref_Type_ID)
+VALUES ('Писане на хипертекс (html) посредством Kotlin DSL',
+		(SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+        
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('HTML5 - част 1 семантични тагове.', (SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('CSS: стилове, класове, селектори', (SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('CSS: layouts, flexbox', (SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('JavaScript - част 1', (SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Работа със сесии и cookies (от страна на сървъра и клиента)', (SELECT ID FROM PresentationType WHERE Type = 'Back-end'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Протокол HTTP версия 2.0+', (SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('‚Респонсив‘ и адаптируем дизайн и заявки към медията (ресурсите); @media таг;', (SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Изграждане на приставки за браузър Хром', (SELECT ID FROM PresentationType WHERE Type = 'Basic concepts'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Network Etiquette - общуване в уеб', (SELECT ID FROM PresentationType WHERE Type = 'Basic concepts'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Тестване на уеб приложения със Selenium web driver.', (SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Сигурност в уеб приложения (security testing)', (SELECT ID FROM PresentationType WHERE Type = 'Basic concepts'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Spring (java)', (SELECT ID FROM PresentationType WHERE Type = 'Back-end'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Clipping и Masking в CSS', (SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('CSS регресивно тестване  (CasperJS), Библиотеки phantomjs и PhantomCSS', (SELECT ID FROM PresentationType WHERE Type = 'Basic concepts'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Responsive images', (SELECT ID FROM PresentationType WHERE Type = 'Basic concepts'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Multi-touch Web Development', (SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Рамка vue.js', (SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Компресиране на текст в уеб', (SELECT ID FROM PresentationType WHERE Type = 'Basic concepts'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Производителност при зареждане на скриптове в уеб', (SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Shadow DOM 201, CSS and Styling. Advanced Concepts & DOM APIs', (SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('HTML template ', (SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('HTTPS и HTTP - сигурност в PHP', (SELECT ID FROM PresentationType WHERE Type = 'Back-end'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Скалируема и модулна архитектура за CSS', (SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('WebSocket с PHP', (SELECT ID FROM PresentationType WHERE Type = 'Back-end'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Прихващане на аудио и видео в HTML5', (SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Библиотека jQuery', (SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Добри и лоши практики при изграждане и софтуерната архитектура на уеб сайтове', (SELECT ID FROM PresentationType WHERE Type = 'Basic concepts'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Apache. Архитектура, инсталиране, конфигуриране, виртуални хостове.', (SELECT ID FROM PresentationType WHERE Type = 'Back-end'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Диаграми за Уеб с Visio', (SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Angular.js', (SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Bootstrap', (SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Уеб приложения в мобилни устройства: Cordova', (SELECT ID FROM PresentationType WHERE Type = 'Basic concepts'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('ReactJS ', (SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('ECMAScript 2016/6/ ES 7+', (SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('JavaScript Lint', (SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Уеб компоненти.', (SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Spring Boot (java). Примерни уеб приложения. Демонстрации.', (SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Споделяне на ресурси от различни източници (CORS).', (SELECT ID FROM PresentationType WHERE Type = 'Basic concepts'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Аудио филтри за уеб.', (SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('HammerJS - поддръжка на жестове в уеб приложенията', (SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Progressive Web Apps(PWA)', (SELECT ID FROM PresentationType WHERE Type = 'Front-end'));
+
+INSERT INTO Presentation (Theme, Ref_Type_ID) Values ('Технология Blazor', (SELECT ID FROM PresentationType WHERE Type = 'Technologies'));
+COMMIT;
