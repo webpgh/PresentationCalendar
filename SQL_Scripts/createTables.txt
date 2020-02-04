@@ -2,9 +2,9 @@ CREATE TABLE Student (
 	ID INT AUTO_INCREMENT PRIMARY KEY,
 	Email varchar(50) CHARACTER SET utf8 NOT NULL UNIQUE,
 	Username varchar(50) CHARACTER SET utf8 NOT NULL UNIQUE,
-	Faculty_Number INT NOT NULL UNIQUE
+	Faculty_Number INT NOT NULL UNIQUE,
+	role varchar(10) CHARACTER SET utf 8 NOT NULL
 )
-
 
 CREATE TABLE PresentationType(
 	ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -23,8 +23,13 @@ CREATE TABLE Student_Presentation (
 	Ref_Student_ID INT,
 	Ref_Presentation_ID INT,
 	Start_Time DATETIME,
-	End_Time DATETIME
+	End_Time DATETIME,
 	
-	FOREIGN KEY (Ref_User_ID) REFERENCES Student (ID),
+	FOREIGN KEY (Ref_Student_ID) REFERENCES Student (ID),
 	FOREIGN KEY (Ref_Presentation_ID) REFERENCES Presentation (ID)
 );
+
+CREATE TABLE UserRole(
+	ID INT AUTO_INCREMENT PRIMARY KEY,
+	Type varchar(10) CHARACTER SET utf8 NOT NULL
+)
