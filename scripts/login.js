@@ -8,7 +8,7 @@
     /**
      * Validate the form before sending it
      */
-    loginButton.addEventListener('click', validateForm);
+    // loginButton.addEventListener('click', validateForm);
 
     /**
      * Send the form
@@ -21,6 +21,7 @@ function validateForm(event) {
     var userName = document.getElementById('user-name').value;
     var password = document.getElementById('password').value;
 
+
     if (userName == '' || password == '') {
         alert('User name and password cannot be empty!')
     }
@@ -32,11 +33,12 @@ function sendForm(event) {
 
     var user = {
         userName: userName,
-        password: password
+        facultyNumber: password
     };
 
     login('src/login.php', { method: 'POST', data: `data=${JSON.stringify(user)}` });
 }
+
 
 function login(url, settings) {
     fetch(url, {
@@ -54,6 +56,7 @@ function login(url, settings) {
 function load(response) {
     if (response.success) {
         window.location = 'calendar.html';
+        console.log("success");
     } else {
         console.log(response)
     }
