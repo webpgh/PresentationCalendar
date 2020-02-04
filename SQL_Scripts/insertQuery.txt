@@ -1,3 +1,4 @@
+----------------------------------------------------------------------------------------
 BEGIN;
 INSERT INTO PresentationType(Type) 
 VALUES ('Front-end');
@@ -12,6 +13,18 @@ INSERT INTO PresentationType(Type)
 VALUES ('Technologies');
 
 COMMIT;
+
+----------------------------------------------------------------------------------------
+
+BEGIN;
+
+INSERT INTO student (email, username, faculty_number, role) values ('pesho@abv.bg', 'pesho1', '11111', 'ADMIN'); 
+
+INSERT INTO student (email, username, faculty_number, role) values ('sasho@abv.bg', 'sasho2', '22222', 'USER');
+
+COMMIT;
+
+----------------------------------------------------------------------------------------
 
 BEGIN;
 
