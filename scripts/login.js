@@ -8,7 +8,7 @@
     /**
      * Validate the form before sending it
      */
-    // loginButton.addEventListener('click', validateForm);
+    loginButton.addEventListener('click', validateForm);
 
     /**
      * Send the form
@@ -31,14 +31,24 @@ function sendForm(event) {
     var userName = document.getElementById('user-name').value;
     var password = document.getElementById('password').value;
 
-    var user = {
+    var data = {
         userName: userName,
         facultyNumber: password
     };
 
-    login('src/login.php', { method: 'POST', data: `data=${JSON.stringify(user)}` });
+    login('http://localhost/phpLabs/PresentationCalendar/src/login.php', { method: 'POST', data: `data=${JSON.stringify(data)}` });
 }
 
+
+function load(response) {
+    debugger;
+    if (response.status == "ok") {
+        window.location = '../html/calendar.html';
+        console.log("success");
+    } else {
+        console.log(response)
+    }
+}
 
 function login(url, settings) {
     fetch(url, {
@@ -50,14 +60,5 @@ function login(url, settings) {
     })
         .then(response => response.json())
         .then(data => load(data))
-        .catch(error => console.log(error));
 }
 
-function load(response) {
-    if (response.success) {
-        window.location = 'calendar.html';
-        console.log("success");
-    } else {
-        console.log(response)
-    }
-}

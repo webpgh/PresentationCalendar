@@ -8,12 +8,12 @@ class Database
 
     public function __construct()
     {
-        $config = parse_ini_file("config\config.ini", true);
+        $config = parse_ini_file("..\config\config.ini", true);
 
-        $host = $config(['db']['host']);
-        $dbname = $config(['db']['name']);
-        $user = $config(['db']['user']);
-        $password = $config(['db']['password']);
+        $host = $config['db']['host'];
+        $dbname = $config['db']['name'];
+        $user = $config['db']['user'];
+        $password = $config['db']['password'];
 
         $this->init($host, $dbname, $user, $password);
     }
@@ -30,7 +30,10 @@ class Database
                 $userName,
                 $password,
                 array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")
+
             );
+
+            $this->prepareStatements();
         } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
         }
@@ -54,7 +57,10 @@ class Database
     public function selectUserQuery($data)
     {
         try {
+            // $this->selectUser->bindValue()
+
             $this->selectUser->execute($data);
+            return array("success" => true, "data" => $this->selectUser);
         } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
             return (array("success" => false, "error" => $e->getMessage()));

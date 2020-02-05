@@ -8,7 +8,6 @@ header("Content-type: application/json");
 $errors = [];
 
 if ($_POST) {
-
     $data = json_decode($_POST["data"], true);
 
     if ($data["userName"] && $data["facultyNumber"]) {

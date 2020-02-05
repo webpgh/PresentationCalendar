@@ -30,7 +30,8 @@ class Student
 
     public function isValid()
     {
-        $query = $this->db->selectUserQuery(array("user" => $this->userName), array("faculty_number" => $this->facultyNumber));
+        $this->facultyNumber = intval($this->facultyNumber);
+        $query = $this->db->selectUserQuery(array("user" => $this->userName, "faculty_number" => $this->facultyNumber));
 
         if ($query["success"]) {
             /**
