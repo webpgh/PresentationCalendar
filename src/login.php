@@ -1,11 +1,14 @@
 <?php
 
 require_once "Student.php";
+require_once "loginResponse.php";
 
 session_start();
-
 header("Content-type: application/json");
+
 $errors = [];
+$students = [];
+
 
 if ($_POST) {
     $data = json_decode($_POST["data"], true);
@@ -17,6 +20,8 @@ if ($_POST) {
         if ($isValid["success"]) {
             $_SESSION["userName"] = $student->getUsername();
             $_SESSION["password"] = $student->getFacultyNumber();
+            $student = $student->getStudent();
+            $students = $isValid["validUser"];
         } else {
             $errors[] = $isValid["error"];
         }
@@ -25,7 +30,7 @@ if ($_POST) {
     if ($errors) {
         $response = ["success" => false, "data" => $errors];
     } else {
-        $response = ["success" => true];
+        $response = ["success" => true, "data" => $students];
     }
 
     /**

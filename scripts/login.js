@@ -60,6 +60,10 @@ function login(url, settings) {
 
 function load(response) {
     if (response.success) {
+        var userData = response.data;
+        var userCookie = JSON.stringify(userData);
+        document.cookie = userCookie;
+        debugger;
         window.location = '../html/calendar.html';
     } else {
         errors.innerHTML = response.data;
