@@ -56,7 +56,6 @@ function login(url, settings) {
 }
 
 function load(response) {
-    debugger;
     if (response.success) {
         window.location = '../html/calendar.html';
     } else {
