@@ -56,11 +56,10 @@ function login(url, settings) {
 }
 
 function load(response) {
+    debugger;
     if (response.success) {
-        debugger;
         window.location = '../html/calendar.html';
-        console.log("success");
     } else {
-        console.log(response)
+        errors.innerHTML = response.data;
     }
 }

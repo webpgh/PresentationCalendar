@@ -43,6 +43,8 @@ class Student
 
             if ($user) {
                 return array("success" => true);
+            } else {
+                return array("success" => false, "error" => "Грешно потребителско име или парола!");
             }
         } else {
             return array("success" => false, "error" => $query["error"]);
