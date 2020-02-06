@@ -5,6 +5,7 @@ class Database
 
     private $connection;
     private $selectUser;
+    private $selectedPresentations;
 
     public function __construct()
     {
@@ -47,6 +48,13 @@ class Database
     {
         $sql = "SELECT * FROM student WHERE Username=:user AND Faculty_Number=:faculty_number";
         $this->selectUser = $this->connection->prepare($sql);
+
+        $selectPresentationsQuery = "SELECT Username, Theme, [Type], Start_Time 
+                                     FROM Student_Presentation JOIN Presentation ON Ref_Presentation_ID = Presentation.ID
+                                                               JOIN Student ON Ref_Student_ID = Student.ID
+                                                               JOIN PresentationType ON Presentation.Presentation_Type_ID = PresentationType.ID";
+
+        $this->selectedPresentations = $this->connection->prepare($selectPresentationsQuery);
     }
 
     /**
@@ -61,7 +69,25 @@ class Database
 
             $this->selectUser->execute($data);
             return array("success" => true, "data" => $this->selectUser);
+
         } catch (PDOException $e) {
+
+            echo "Connection failed: " . $e->getMessage();
+            return (array("success" => false, "error" => $e->getMessage()));
+        }
+    }
+
+    public function selectPresentationsQuery()
+    {
+        try {
+
+            $this->selectedPresentations->execute();
+            echo $this->selectPresentations;
+
+            return array("success" => true, "data" => $this->selectedPresentations); 
+            
+        } catch(PDOException $e) {
+
             echo "Connection failed: " . $e->getMessage();
             return (array("success" => false, "error" => $e->getMessage()));
         }
