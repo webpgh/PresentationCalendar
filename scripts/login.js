@@ -24,10 +24,14 @@ function validateForm(event) {
 
     if (userName == '' || password == '') {
         alert('User name and password cannot be empty!')
+        window.location = '../html/login.html';
     }
 }
 
 function sendForm(event) {
+
+    event.preventDefault();
+
     var userName = document.getElementById('user-name').value;
     var password = document.getElementById('password').value;
 
@@ -37,17 +41,6 @@ function sendForm(event) {
     };
 
     login('http://localhost/phpLabs/PresentationCalendar/src/login.php', { method: 'POST', data: `data=${JSON.stringify(data)}` });
-}
-
-
-function load(response) {
-    debugger;
-    if (response.status == "ok") {
-        window.location = '../html/calendar.html';
-        console.log("success");
-    } else {
-        console.log(response)
-    }
 }
 
 function login(url, settings) {
@@ -62,3 +55,12 @@ function login(url, settings) {
         .then(data => load(data))
 }
 
+function load(response) {
+    if (response.success) {
+        debugger;
+        window.location = '../html/calendar.html';
+        console.log("success");
+    } else {
+        console.log(response)
+    }
+}

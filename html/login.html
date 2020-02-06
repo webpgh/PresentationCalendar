@@ -8,7 +8,6 @@
     <title>Login to Presentation Calendar</title>
 
     <script defer src="../scripts/login.js"></script>
-    <script defer src="../scripts/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="../css/login.css">
 </head>
 
@@ -25,7 +24,7 @@
                     <input type="text" id="user-name" name="userName" />
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password">
-                    <input type="submit" id="login" value="Login">
+                    <input type="submit" id="login" value="Login" onsubmit="return false;">
 
                 </form>
             </fieldset>
