@@ -30,6 +30,9 @@ function validateForm(event) {
 
 function sendForm(event) {
 
+    /**
+   * Prevent the default behavior of the clicking the form submit button
+   */
     event.preventDefault();
 
     var userName = document.getElementById('user-name').value;
