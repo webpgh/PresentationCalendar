@@ -2,14 +2,21 @@
 
 <html>
 
-<head>
-    <meta charset="utf-8" />
+    <head>
+        <meta charset="utf-8"/>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type="text/javascript" src="../scripts/jquery.simple-calendar.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/calendar.css"/>
 
-    <title>Calendar</title>
-</head>
+        <title>Calendar</title>
+        <script>
+            $(document).ready(function () {
+                $("#container").simpleCalendar();
+            });
+        </script>
+    </head>
 
-<body>
-    <h1>Welcome to Presentation Calendar</h1>
-</body>
-
+    <body>
+        <div id="container"></div>
+    </body>
 </html>
