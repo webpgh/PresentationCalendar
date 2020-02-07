@@ -15,9 +15,12 @@
 <body>
     <h1>Welcome to Presentation Calendar</h1>
 
-    <div>
-        <button id="import-csv">Import Students data from CSV file</button>
-    </div>
+    <form enctype="multipart/form-data" method="POST" role="form" action="../src/importFile.php">
+        <div>
+            <input type="file" name="file" id="import-csv"></input>
+            <input type="submit" name="submit" value="Качи csv файл"></input>
+        </div>
+    </form>
 </body>
 
 </html>

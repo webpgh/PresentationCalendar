@@ -1,7 +1,6 @@
 <?php
 
 require_once "Student.php";
-require_once "loginResponse.php";
 
 session_start();
 header("Content-type: application/json");

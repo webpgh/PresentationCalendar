@@ -49,6 +49,17 @@ class Database
         $this->selectUser = $this->connection->prepare($sql);
     }
 
+    public function executeQuery($query)
+    {
+        $queryPrep = $this->connection->prepare($query);
+        $queryResult = $queryPrep->execute();
+
+        if ($queryResult) {
+            return TRUE;
+        }
+        return FALSE;
+    }
+
     /**
      * We use this method to execute select queries
      * We only execute the created prepared statement for selecting user in DB with new database

@@ -2,15 +2,23 @@
 
     var currentUserCookie = getCookie("currentUser");
 
-    var currentUser = JSON.parse(cookie);
+    var currentUser = JSON.parse(currentUserCookie);
 
-    debugger;
     if (currentUser.role == "ADMIN") {
-        document.getElementById("import-csv").style.display = "block";
+        document.getElementById("import-csv");
+        var file = document.getElementById("import-csv");
+        file.style.display = "block";
+        // debugger;
+        // fetch("http://localhost/phpLabs/PresentationCalendar/src/importFile.php", {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        //     },
+        //     body: file
+        // })
+        //     .then(response => response.json())
+        //     .then(data => load(data))
     }
-
-    console.log('kostawe');
-    debugger;
 
 })();
 
