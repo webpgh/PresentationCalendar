@@ -47,7 +47,6 @@ function sendForm(event) {
 }
 
 function login(url, settings) {
-    debugger;
     fetch(url, {
         method: 'POST',
         headers: {
