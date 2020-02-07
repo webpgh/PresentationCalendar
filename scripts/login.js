@@ -70,7 +70,6 @@ function load(response) {
         var userData = response.data;
         var userCookie = JSON.stringify(userData);
         setCookie("currentUser", userCookie, 365);
-        // document.cookie = userCookie;
         window.location = '../html/calendar.html';
     } else {
         errors.innerHTML = response.data;

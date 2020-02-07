@@ -4,11 +4,21 @@ require_once "DB.php";
 
 session_start();
 
-
 if ($_POST) {
-
     $db = new Database();
+
+    if ($_FILES['file']['tmp_name'] == "") {
+        header("Location: ../html/calendar.html");
+    }
+
     $file = $_FILES['file']['tmp_name'];
+    $fileName = $_FILES['file']['name'];
+    $extension = explode('.', $fileName)[1];
+
+    if ($extension != "csv") {
+        echo 'Extension of the file must be .csv';
+        return;
+    }
 
     $handle = fopen($file, "r");
     $counter = 0;
