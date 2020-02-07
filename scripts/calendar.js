@@ -4,6 +4,11 @@
 
     var currentUser = JSON.parse(cookie);
 
+    debugger;
+    if (currentUser.role == "ADMIN") {
+        document.getElementById("import-csv").style.display = "block";
+    }
+
     console.log('kostawe');
     debugger;
 
