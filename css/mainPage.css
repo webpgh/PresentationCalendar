@@ -19,7 +19,7 @@
       rgba(102, 145, 204, 1) 100%
     );
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f0f0f5",endColorstr="#6691cc",GradientType=1);
-    height: 100%;
+    min-height: 100%;
     width: 100%;
     position: absolute;
   }
