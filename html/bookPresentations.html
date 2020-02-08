@@ -13,17 +13,28 @@
     ></script>
     <script type="text/javascript" src="../scripts/sharedFunctions.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/mainPage.css" />
+    <link rel="stylesheet" type="text/css" href="../css/bookPresentations.css" />
+
     <title>Book presentation</title>
   </head>
 
-  <body style="margin-left: 0; min-height: 100%; overflow:hidden">
+  <body style="margin: 0; min-height: 100%; overflow:hidden">
     <div class="background">
+        <img id="presentingPicture" src="../pictures/teacher-020-512.png" alt="Italian Trulli">
       <div class="header">
         <a class="themesbtn" type="button" href="./calendar.html">Календар</a>
         <a class="themesbtn" type="button" href="./themes.html">Теми</a>
         <button class="logoutbtn" onclick="logout()">Log out</button>
       </div>
-      <div id="container"></div>
+      <div id="container">
+          <section class="container">
+              <h2>Избери презентация</h2>
+        <div class="dropdown dropdown-dark">
+            <select id="selectMenu" name="two" class="dropdown-select">
+              
+            </select>
+          </div>
+        </section>
     </div>
   </body>
 </html>

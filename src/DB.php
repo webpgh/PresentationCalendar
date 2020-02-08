@@ -64,7 +64,7 @@ class Database
                                                 ON Presentation.Presentation_Type_ID = PresentationType.ID";
         $this->themes = $this->connection->prepare($getThemesQuery);
 
-        $getAvailablePresentationsQuery = "SELECT Theme, Type 
+        $getAvailablePresentationsQuery = "SELECT Presentation.ID, Theme, Type 
                                            FROM Presentation 
                                            JOIN PresentationType ON Presentation.Presentation_Type_ID = PresentationType.ID
                                            WHERE Presentation.ID NOT IN (SELECT Ref_Presentation_ID 

@@ -10,5 +10,11 @@ function getAvailablePresentations(url) {
 }
 
 function displayAvailablePresentations(data) {
-    debugger;
+    JSON.parse(data).themes.forEach(element => {
+        let option = document.createElement('option');
+        option.value = element.ID;
+        option.text = element.Theme;
+
+        $('#selectMenu').append(option);
+    });
 }
