@@ -43,7 +43,7 @@ function sendForm(event) {
         facultyNumber: password
     };
 
-    login('http://localhost/phpLabs/PresentationCalendar/src/login.php', { method: 'POST', data: `data=${JSON.stringify(data)}` });
+    login('../src/login.php', { method: 'POST', data: `data=${JSON.stringify(data)}` });
 }
 
 function login(url, settings) {

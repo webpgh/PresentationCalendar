@@ -1,5 +1,5 @@
 function logout() {
-  window.location.replace("http://localhost/phpLabs/html/index.html");
+  window.location.replace("http://localhost/phpLabs/PresentationsCalendar/html/index.html");
 }
 
 function getPresentations(url) {
@@ -64,5 +64,5 @@ function createCalendar(presentations) {
 }
 
 $(document).ready(function() {
-  getPresentations("http://localhost/phpLabs/src/calendar.php");
+  getPresentations("../src/calendar.php");
 });
