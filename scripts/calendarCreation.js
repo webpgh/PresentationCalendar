@@ -1,7 +1,3 @@
-function logout() {
-  window.location.replace("http://localhost/phpLabs/PresentationsCalendar/html/index.html");
-}
-
 function getPresentations(url) {
   fetch(url)
     .then(response => response.text())
@@ -63,15 +59,18 @@ function createCalendar(presentations) {
       let button = document.createElement('button');
       button.innerHTML = "Добави презентация";
       button.className = 'insertPresentationDate';
-      button.onclick = redirectTobookPresentation(date);
+      const encodedDate = encodeURIComponent(date);
+      button.onclick = function() { 
+        redirectToBookPresentation(encodedDate);
+    };
       
       $(".event-container").append(button);
     }
   });
 }
 
-function redirectTobookPresentation(date){
-  window.href = `./bookPresentation.html?date=${date}`;
+function redirectToBookPresentation(date){
+  location.href = `../html/bookPresentations.html?date=${date}`;
 }
 
 $(document).ready(function() {
