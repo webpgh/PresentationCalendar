@@ -1,3 +1,7 @@
+function logout() {
+  window.location.replace("http://localhost/phpLabs/html/index.html");
+}
+
 function getPresentations(url) {
   fetch(url)
     .then(response => response.text())
