@@ -6,6 +6,7 @@ class Database
     private $connection;
     private $selectUser;
     private $selectedPresentations;
+    private $themes;
 
     public function __construct()
     {
@@ -18,7 +19,7 @@ class Database
      */
     private function init()
     {
-        
+
         $config = parse_ini_file("..\config\config.ini", true);
 
         $host = $config['db']['host'];
@@ -56,6 +57,11 @@ class Database
                                                                JOIN PresentationType ON Presentation.Presentation_Type_ID = PresentationType.ID";
 
         $this->selectedPresentations = $this->connection->prepare($selectPresentationsQuery);
+
+        $getThemesQuery = "SELECT Theme, Type FROM Presentation 
+                                                JOIN PresentationType 
+                                                ON Presentation.Presentation_Type_ID = PresentationType.ID";
+        $this->themes = $this->connection->prepare($getThemesQuery);
     }
 
     /**
@@ -66,13 +72,9 @@ class Database
     public function selectUserQuery($data)
     {
         try {
-            // $this->selectUser->bindValue()
-
             $this->selectUser->execute($data);
             return array("success" => true, "data" => $this->selectUser);
-
         } catch (PDOException $e) {
-
             echo "Connection failed: " . $e->getMessage();
             return (array("success" => false, "error" => $e->getMessage()));
         }
@@ -83,14 +85,23 @@ class Database
         try {
 
             $this->selectedPresentations->execute();
-
             $result = $this->selectedPresentations->fetchAll();
-            $jsonData = json_encode($result);
 
-            return array("success" => true, "data" => $result); 
-            
-        } catch(PDOException $e) {
+            return array("success" => true, "data" => $result);
+        } catch (PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+            return (array("success" => false, "error" => $e->getMessage()));
+        }
+    }
 
+    public function getThemes()
+    {
+        try {
+            $this->themes->execute();
+            $result = $this->themes->fetchAll();
+
+            return array("success" => true, "data" => $result);
+        } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
             return (array("success" => false, "error" => $e->getMessage()));
         }
