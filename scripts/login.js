@@ -54,12 +54,12 @@ function login(url, settings) {
         },
         body: settings.data
     })
-        .then(response => response.json())
+        .then(response => response)
         .then(data => load(data))
 }
 
 function load(response) {
-    if (response.success) {
+    if (response.ok) {
         window.location = '../html/calendar.html';
     } else {
         errors.innerHTML = response.data;
