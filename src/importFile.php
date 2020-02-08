@@ -8,7 +8,8 @@ if ($_POST) {
     $db = new Database();
 
     if ($_FILES['file']['tmp_name'] == "") {
-        header("Location: ../html/calendar.html");
+        header("Location: ../html/import_students.html");
+        return;
     }
 
     $file = $_FILES['file']['tmp_name'];
@@ -16,12 +17,10 @@ if ($_POST) {
     $extension = explode('.', $fileName)[1];
 
     if ($extension != "csv") {
-        echo 'Extension of the file must be .csv';
-        return;
+        header("Location: ../html/failed-import.html");
     }
 
     $handle = fopen($file, "r");
-    $counter = 0;
 
     while (($line = fgetcsv($handle, 1000, ",")) !== FALSE) {
         $userName = $line[0];
@@ -29,16 +28,14 @@ if ($_POST) {
         $facultyNumber = $line[2];
         $role = $line[3];
 
-        // $sql = "INSERT INTO student (Email, Username, Faculty_Number, role) values ('$email', '$userName', '$facultyNumber', '$role')";
+        $sql = "INSERT INTO student (Email, Username, Faculty_Number, role) values ('$email', '$userName', '$facultyNumber', '$role')";
 
-        $query = $db->importStudents(array("Email"=>$email ,"Username" => $this->userName, "Faculty_Number" => $this->facultyNumber, "role" => $role));
-
-        $counter = $counter + 1;
+        $query = $db->importStudents($sql);
     }
 
     if ($query) {
-        echo "Data inserted successfully";
+        header("Location: ../html/successful-import.html");
     } else {
-        echo "Error occured";
+        header("Location: ../html/failed-import.html");
     }
 }

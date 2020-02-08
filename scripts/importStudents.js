@@ -1,15 +1,13 @@
-(function () {
+window.onload = (function() {
 
     var currentUserCookie = getCookie("currentUser");
-
     var currentUser = JSON.parse(currentUserCookie);
 
     if (currentUser.role == "ADMIN") {
-        var csvForm = document.getElementById("csv-form");
-        csvForm.style.display = "block";
+        var importButton = document.getElementById("importbtn");
+        importButton.style.display = "block";
     }
-
-})();
+});
 
 function getCookie(name) {
     var pattern = RegExp(name + "=.[^;]*")

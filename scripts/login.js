@@ -4,7 +4,6 @@
      * Get the login button
      */
     var loginButton = document.getElementById('login');
-
     /**
      * Validate the form before sending it
      */

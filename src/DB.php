@@ -7,7 +7,7 @@ class Database
     private $selectUser;
     private $selectedPresentations;
     private $themes;
-    private $insertStudents;
+    // private $insertStudents;
 
     public function __construct()
     {
@@ -64,14 +64,15 @@ class Database
                                                 ON Presentation.Presentation_Type_ID = PresentationType.ID";
         $this->themes = $this->connection->prepare($getThemesQuery);
 
-        $insertStudentsQuery = "INSERT INTO student (Email, Username, Faculty_Number, role) values ('Email=:email', 'Username=:userName', 'Faculty_Number=:faculty_number', 'role=:role')";
+        // $insertStudentsQuery = "INSERT INTO student (Email, Username, Faculty_Number, role) values ('Email=:email', 'Username=:userName', 'Faculty_Number=:faculty_number', 'role=:role')";
         
-        $this->insertStudents = $this->connection->prepare($insertStudentsQuery);
+        // $this->insertStudents = $this->connection->prepare($insertStudentsQuery);
     }
 
-    public function importStudents($data)
+    public function importStudents($query)
     {
-       $queryResult = $this->insertStudents->execute($data);
+        $queryPrep = $this->connection->prepare($query);
+        $queryResult = $queryPrep->execute();
 
         if ($queryResult) {
             return TRUE;

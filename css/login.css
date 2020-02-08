@@ -15,7 +15,8 @@ html {
     border-color: #00a8ff;
 }
 
-label, input {
+label,
+input {
     display: block;
     font-size: 25px;
     margin-top: 15px;
