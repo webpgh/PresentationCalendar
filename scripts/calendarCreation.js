@@ -59,8 +59,19 @@ function createCalendar(presentations) {
 
     onInit: function(calendar) {}, // Callback after first initialization
     onMonthChange: function(month, year) {}, // Callback on month change
-    onDateSelect: function(date, events) {}
+    onDateSelect: function(date, events) {
+      let button = document.createElement('button');
+      button.innerHTML = "Добави презентация";
+      button.className = 'insertPresentationDate';
+      button.onclick = redirectTobookPresentation(date);
+      
+      $(".event-container").append(button);
+    }
   });
+}
+
+function redirectTobookPresentation(date){
+  window.href = `./bookPresentation.html?date=${date}`;
 }
 
 $(document).ready(function() {
