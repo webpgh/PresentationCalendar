@@ -18,3 +18,21 @@ function displayAvailablePresentations(data) {
         $('#selectMenu').append(option);
     });
 }
+
+function bookPresentation() {
+    const params = (new URL(document.location)).searchParams;
+    const date = new Date(params.get("date"));
+    const selectedPresentationID = parseInt($('#selectMenu').val());
+    const currentUser = JSON.parse(getCookie("currentUser"));
+
+    const userPresentation = {
+        date: date,
+        presentationID: selectedPresentationID,
+        currentUserID: currentUser["ID"]
+    };
+
+    debugger;
+    sendData('../src/updateUserPresentations.php', { data: `data=${JSON.stringify(userPresentation)}` });
+
+    
+}

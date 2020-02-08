@@ -1,3 +1,7 @@
 function logout() {
-    window.location.replace("http://localhost/phpLabs/PresentationsCalendar/html/index.html");
+    window.location.replace("../html/index.html");
   }
+
+  function importStudents() {
+    window.location.replace("../html/import_students.html")
+}

@@ -9,6 +9,14 @@
     position: relative;
 }
 
+#bookBtn {
+    background-color: #353535;
+    color: white;
+    border-radius: 8px;
+    border-color: #353535;
+    height: 40px;
+}
+
 .container {
   width: 400px;
   text-align: center;

@@ -1,7 +1,3 @@
-function importStudents() {
-    window.location.replace("../html/import_students.html")
-}
-
 function getPresentations(url) {
     fetch(url)
         .then(response => response.text())

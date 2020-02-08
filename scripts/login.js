@@ -34,10 +34,9 @@ function sendForm(event) {
      */
     event.preventDefault();
 
-    var userName = document.getElementById('user-name').value;
-    var password = document.getElementById('password').value;
-
-    var data = {
+    const userName = document.getElementById('user-name').value;
+    const password = document.getElementById('password').value;
+    const data = {
         userName: userName,
         facultyNumber: password
     };
@@ -58,16 +57,18 @@ function login(url, settings) {
 }
 
 function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
+    let d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    var expires = "expires=" + d.toUTCString();
+
+    const expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
 function load(response) {
     if (response.success) {
-        var userData = response.data;
-        var userCookie = JSON.stringify(userData);
+        const userData = response.data;
+        const userCookie = JSON.stringify(userData);
+
         setCookie("currentUser", userCookie, 365);
         window.location = '../html/calendar.html';
     } else {
