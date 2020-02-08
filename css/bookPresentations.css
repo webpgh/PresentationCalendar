@@ -15,10 +15,13 @@
     border-radius: 8px;
     border-color: #353535;
     height: 40px;
+    flex: 30%;
+    text-align: center;
+    line-height: 40px;
 }
 
 .container {
-  width: 400px;
+  width: 700px;
   text-align: center;
   margin-top: 50px;
 }
@@ -26,14 +29,20 @@
 .container > .dropdown {
   margin: 0 20px;
   vertical-align: top;
+  float:left;
+}
+
+h2 {
+  margin: 10px;
 }
 
 .dropdown {
   display: inline-block;
   position: relative;
   overflow: hidden;
-  height: 28px;
+  height: 35px !important;
   width: 150px;
+  flex: 70%;
   background: #f2f2f2;
   border: 1px solid;
   border-color: white #f7f7f7 whitesmoke;
