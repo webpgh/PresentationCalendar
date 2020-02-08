@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 
-<html>
+<html style="height: 100%;">
   <head>
     <meta charset="utf-8" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script
-    type="text/javascript"
-    src="../scripts/calendarCreation.js"
-  ></script>
+      type="text/javascript"
+      src="../scripts/calendarCreation.js"
+    ></script>
     <script
       type="text/javascript"
       src="../scripts/jquery.simple-calendar.js"
@@ -16,12 +16,16 @@
 
     <title>Calendar</title>
 
-    <script>
-
-    </script>
+    <script></script>
   </head>
 
-  <body>
-    <div id="container"></div>
+  <body style="margin-left: 0; min-height: 100%; overflow:hidden">
+    <div class="background">
+      <div class="header">
+        <a class="themesbtn" type="button" href="#">Теми</a>
+        <button class="logoutbtn" onclick="logout()">Log out</button>
+      </div>
+      <div id="container"></div>
+    </div>
   </body>
 </html>
