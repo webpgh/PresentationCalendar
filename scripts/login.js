@@ -1,4 +1,4 @@
-(function () {
+(function() {
 
     /**
      * Get the login button
@@ -31,8 +31,8 @@ function validateForm(event) {
 function sendForm(event) {
 
     /**
-   * Prevent the default behavior of the clicking the form submit button
-   */
+     * Prevent the default behavior of the clicking the form submit button
+     */
     event.preventDefault();
 
     var userName = document.getElementById('user-name').value;
@@ -43,17 +43,17 @@ function sendForm(event) {
         facultyNumber: password
     };
 
-    login('http://localhost/phpLabs/PresentationCalendar/src/login.php', { method: 'POST', data: `data=${JSON.stringify(data)}` });
+    login('../src/login.php', { method: 'POST', data: `data=${JSON.stringify(data)}` });
 }
 
 function login(url, settings) {
     fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
-        },
-        body: settings.data
-    })
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            },
+            body: settings.data
+        })
         .then(response => response.json())
         .then(data => load(data))
 }

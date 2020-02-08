@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 
-<html>
+<html style="height: 100%;">
 
 <head>
     <meta charset="utf-8" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../scripts/calendarCreation.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.simple-calendar.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/mainPage.css" />
+    <link rel="stylesheet" type="text/css" href="../css/calendar.css" />
+
+    <title>Calendar</title>
 
     <title>Calendar</title>
 
@@ -11,9 +18,10 @@
     <link rel="stylesheet" href="../css/calendar.css">
 
 </head>
+<script></script>
+</head>
 
-<body>
-    <h1>Welcome to Presentation Calendar</h1>
+<body style="margin-left: 0; min-height: 100%; overflow:hidden">
 
     <form enctype="multipart/form-data" method="POST" role="form" action="../src/importFile.php" id="csv-form">
         <div>
@@ -21,6 +29,14 @@
             <button type="submit" name="submit" value="Качи csv файл">Качи csv файл</button>
         </div>
     </form>
+
+    <div class="background">
+        <div class="header">
+            <a class="themesbtn" type="button" href="./themes.html">Теми</a>
+            <button class="logoutbtn" onclick="logout()">Log out</button>
+        </div>
+        <div id="container"></div>
+    </div>
 </body>
 
 </html>

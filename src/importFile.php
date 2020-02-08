@@ -29,9 +29,9 @@ if ($_POST) {
         $facultyNumber = $line[2];
         $role = $line[3];
 
-        $sql = "INSERT INTO student (Email, Username, Faculty_Number, role) values ('$email', '$userName', '$facultyNumber', '$role')";
+        // $sql = "INSERT INTO student (Email, Username, Faculty_Number, role) values ('$email', '$userName', '$facultyNumber', '$role')";
 
-        $query = $db->executeQuery($sql);
+        $query = $db->importStudents(array("Email"=>$email ,"Username" => $this->userName, "Faculty_Number" => $this->facultyNumber, "role" => $role));
 
         $counter = $counter + 1;
     }

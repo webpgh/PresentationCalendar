@@ -5,9 +5,22 @@ class Database
 
     private $connection;
     private $selectUser;
+    private $selectedPresentations;
+    private $themes;
+    private $insertStudents;
 
     public function __construct()
     {
+        $this->init();
+    }
+
+    /**
+     * Create connection to the database on given host, database name, user name and password
+     * Then create some prepared statements, which we will use frequently
+     */
+    private function init()
+    {
+
         $config = parse_ini_file("..\config\config.ini", true);
 
         $host = $config['db']['host'];
@@ -15,19 +28,10 @@ class Database
         $user = $config['db']['user'];
         $password = $config['db']['password'];
 
-        $this->init($host, $dbname, $user, $password);
-    }
-
-    /**
-     * Create connection to the database on given host, database name, user name and password
-     * Then create some prepared statements, which we will use frequently
-     */
-    private function init($host, $database, $userName, $password)
-    {
         try {
             $this->connection = new PDO(
-                "mysql:host=$host;dbname=$database",
-                $userName,
+                "mysql:host=$host;dbname=$dbname",
+                $user,
                 $password,
                 array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")
 
@@ -47,12 +51,27 @@ class Database
     {
         $sql = "SELECT * FROM student WHERE Username=:user AND Faculty_Number=:faculty_number";
         $this->selectUser = $this->connection->prepare($sql);
+
+        $selectPresentationsQuery = "SELECT Username, Theme, Type, Start_Time 
+                                     FROM Student_Presentation JOIN Presentation ON Ref_Presentation_ID = Presentation.ID
+                                                               JOIN Student ON Ref_Student_ID = Student.ID
+                                                               JOIN PresentationType ON Presentation.Presentation_Type_ID = PresentationType.ID";
+
+        $this->selectedPresentations = $this->connection->prepare($selectPresentationsQuery);
+
+        $getThemesQuery = "SELECT Theme, Type FROM Presentation 
+                                                JOIN PresentationType 
+                                                ON Presentation.Presentation_Type_ID = PresentationType.ID";
+        $this->themes = $this->connection->prepare($getThemesQuery);
+
+        $insertStudentsQuery = "INSERT INTO student (Email, Username, Faculty_Number, role) values ('Email=:email', 'Username=:userName', 'Faculty_Number=:faculty_number', 'role=:role')";
+        
+        $this->insertStudents = $this->connection->prepare($insertStudentsQuery);
     }
 
-    public function executeQuery($query)
+    public function importStudents($data)
     {
-        $queryPrep = $this->connection->prepare($query);
-        $queryResult = $queryPrep->execute();
+       $queryResult = $this->insertStudents->execute($data);
 
         if ($queryResult) {
             return TRUE;
@@ -68,10 +87,35 @@ class Database
     public function selectUserQuery($data)
     {
         try {
-            // $this->selectUser->bindValue()
-
             $this->selectUser->execute($data);
             return array("success" => true, "data" => $this->selectUser);
+        } catch (PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+            return (array("success" => false, "error" => $e->getMessage()));
+        }
+    }
+
+    public function selectPresentationsQuery()
+    {
+        try {
+
+            $this->selectedPresentations->execute();
+            $result = $this->selectedPresentations->fetchAll();
+
+            return array("success" => true, "data" => $result);
+        } catch (PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+            return (array("success" => false, "error" => $e->getMessage()));
+        }
+    }
+
+    public function getThemes()
+    {
+        try {
+            $this->themes->execute();
+            $result = $this->themes->fetchAll();
+
+            return array("success" => true, "data" => $result);
         } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
             return (array("success" => false, "error" => $e->getMessage()));
