@@ -115,6 +115,7 @@
 .calendar .day.wrong-month:hover {
     border: 2px solid transparent;
 }
+
 .calendar .day.has-event:after {
     content: "";
     position: absolute;

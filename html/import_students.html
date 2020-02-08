@@ -1,0 +1,23 @@
+<!DOCTYPE html>>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Import Students</title>
+    <script type="text/javascript" src="../scripts/importStudents.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/importStudents.css" />
+</head>
+
+<body>
+
+    <header id="main-header">Import students from CSV file</header>
+    <form id="csv-form" enctype="multipart/form-data" method="POST" role="form" action="../src/importFile.php">
+        <div>
+            <input class="input" type="file" name="file" id="import-csv"></input>
+            <button class="uploadbtn" class="uploadbtn" type="submit" name="submit" value="Качи csv файл">Качи csv файл</button>
+        </div>
+    </form>
+</body>
+
+</html>

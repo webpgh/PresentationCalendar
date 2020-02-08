@@ -1,10 +1,9 @@
-(function () {
+(function() {
 
     /**
      * Get the login button
      */
     var loginButton = document.getElementById('login');
-
     /**
      * Validate the form before sending it
      */
@@ -31,8 +30,8 @@ function validateForm(event) {
 function sendForm(event) {
 
     /**
-   * Prevent the default behavior of the clicking the form submit button
-   */
+     * Prevent the default behavior of the clicking the form submit button
+     */
     event.preventDefault();
 
     var userName = document.getElementById('user-name').value;
@@ -48,18 +47,28 @@ function sendForm(event) {
 
 function login(url, settings) {
     fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
-        },
-        body: settings.data
-    })
-        .then(response => response)
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            },
+            body: settings.data
+        })
+        .then(response => response.json())
         .then(data => load(data))
 }
 
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
 function load(response) {
-    if (response.ok) {
+    if (response.success) {
+        var userData = response.data;
+        var userCookie = JSON.stringify(userData);
+        setCookie("currentUser", userCookie, 365);
         window.location = '../html/calendar.html';
     } else {
         errors.innerHTML = response.data;

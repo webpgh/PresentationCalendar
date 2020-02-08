@@ -8,6 +8,7 @@ class Database
     private $selectedPresentations;
     private $themes;
     private $availablePresentations;
+    // private $insertStudents;
 
     public function __construct()
     {
@@ -71,6 +72,20 @@ class Database
                                                                          FROM Student_Presentation)";
 
         $this->availablePresentations = $this->connection->prepare($getAvailablePresentationsQuery);
+        // $insertStudentsQuery = "INSERT INTO student (Email, Username, Faculty_Number, role) values ('Email=:email', 'Username=:userName', 'Faculty_Number=:faculty_number', 'role=:role')";
+        
+        // $this->insertStudents = $this->connection->prepare($insertStudentsQuery);
+    }
+
+    public function importStudents($query)
+    {
+        $queryPrep = $this->connection->prepare($query);
+        $queryResult = $queryPrep->execute();
+
+        if ($queryResult) {
+            return TRUE;
+        }
+        return FALSE;
     }
 
     /**
