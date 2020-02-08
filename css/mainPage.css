@@ -1,30 +1,15 @@
 .background {
     background: rgb(240, 240, 245);
-    background: -moz-radial-gradient(
-      circle,
-      rgba(240, 240, 245, 1) 20%,
-      rgba(172, 185, 201, 1) 62%,
-      rgba(102, 145, 204, 1) 100%
-    );
-    background: -webkit-radial-gradient(
-      circle,
-      rgba(240, 240, 245, 1) 20%,
-      rgba(172, 185, 201, 1) 62%,
-      rgba(102, 145, 204, 1) 100%
-    );
-    background: radial-gradient(
-      circle,
-      rgba(240, 240, 245, 1) 20%,
-      rgba(172, 185, 201, 1) 62%,
-      rgba(102, 145, 204, 1) 100%
-    );
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f0f0f5",endColorstr="#6691cc",GradientType=1);
+    background: -moz-radial-gradient( circle, rgba(240, 240, 245, 1) 20%, rgba(172, 185, 201, 1) 62%, rgba(102, 145, 204, 1) 100%);
+    background: -webkit-radial-gradient( circle, rgba(240, 240, 245, 1) 20%, rgba(172, 185, 201, 1) 62%, rgba(102, 145, 204, 1) 100%);
+    background: radial-gradient( circle, rgba(240, 240, 245, 1) 20%, rgba(172, 185, 201, 1) 62%, rgba(102, 145, 204, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#f0f0f5", endColorstr="#6691cc", GradientType=1);
     min-height: 100%;
     width: 100%;
     position: absolute;
-  }
-  
-  .header {
+}
+
+.header {
     text-align: center;
     background: #373737;
     color: black;
@@ -32,17 +17,18 @@
     position: fixed;
     width: 100%;
     top: 0;
-  }
-  
-  .themesbtn {
-      float: left;
-      color: white;
-      font-size: larger;
-      padding-top: 15px;
-      padding-left: 15px;
-  }
-  
-  .logoutbtn {
+}
+
+.themesbtn {
+    float: left;
+    color: white;
+    font-size: larger;
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+.logoutbtn,
+#importbtn {
     float: right !important;
     border: none;
     background: rgba(172, 185, 201, 1) 62% !important;
@@ -54,13 +40,18 @@
     border-radius: 6px;
     display: inline-block;
     transition: all 0.3s ease 0s;
-  }
-  
-  .logoutbtn:hover {
+}
+
+#importbtn {
+    display: none;
+}
+
+.logoutbtn,
+#importbtn:hover {
     font-weight: 700 !important;
     letter-spacing: 3px;
     background: none;
     -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
     -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
     transition: all 0.3s ease 0s;
-  }
+}

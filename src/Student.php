@@ -41,8 +41,12 @@ class Student
              */
             $user = $query["data"]->fetch(PDO::FETCH_ASSOC);
 
+            $this->role = $user["role"];
+            $this->email = $user["Email"];
+            $this->id = intval($user["ID"]);
+
             if ($user) {
-                return array("success" => true);
+                return array("success" => true, "validUser" => $user);
             } else {
                 return array("success" => false, "error" => "Грешно потребителско име или парола!");
             }
@@ -73,5 +77,10 @@ class Student
     public function getEmail()
     {
         return $this->email;
+    }
+
+    public function getStudent()
+    {
+        return $this;
     }
 }
