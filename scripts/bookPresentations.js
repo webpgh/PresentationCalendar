@@ -47,5 +47,16 @@ function sendData(url, settings) {
     body: settings.data
   })
     .then(response => response.text())
-    .then(data => JSON.parse(data))
+    .then(data => showResponse(JSON.parse(data)));
+}
+
+function showResponse(data){
+  let message = "";
+  if(data.success){
+    message = "Презентацията беше записана успешно!";
+  }else{
+    message = "Възникна грешка при записването на презентацията!"
+  }
+
+  document.getElementById('responseMessage').innerText = message;
 }
