@@ -25,12 +25,11 @@ function bookPresentation() {
   const selectedPresentationID = parseInt($("#selectMenu").val());
   const currentUser = JSON.parse(getCookie("currentUser"));
   const endDate = new Date(date.getTime() + 8 * 60000);
-
   const userPresentation = {
     currentUserID: currentUser["ID"],
     presentationID: selectedPresentationID,
-    startDate: date,
-    endDate: endDate
+    startDate: new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes())),
+    endDate: new Date(Date.UTC(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), endDate.getHours(), endDate.getMinutes()))
   };
 
   sendData("../src/updateUserPresentations.php", {

@@ -2,7 +2,7 @@ window.onload = (function() {
 
     const currentUserCookie = getCookie("currentUser");
     const currentUser = JSON.parse(currentUserCookie);
-debugger;
+
     if (currentUser.role == "ADMIN") {
         const importButton = document.getElementById("importbtn");
         importButton.style.display = "block";
