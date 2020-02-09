@@ -11,7 +11,8 @@ html {
 }
 
 .uploadbtn,
-.input {
+.input,
+#back {
     border: none;
     background: rgba(172, 185, 201, 1) 62% !important;
     color: black !important;
