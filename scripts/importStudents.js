@@ -5,9 +5,15 @@ window.onload = (function() {
 
     if (currentUser.role == "ADMIN") {
         var importButton = document.getElementById("importbtn");
+        var exportbtn = document.getElementById("exportbtn");
         importButton.style.display = "block";
+        exportbtn.style.display = "block";
     }
 });
+
+function backToHomePage() {
+    window.location.replace("../html/calendar.html");
+}
 
 function getCookie(name) {
     var pattern = RegExp(name + "=.[^;]*")

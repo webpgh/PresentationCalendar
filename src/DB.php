@@ -52,7 +52,7 @@ class Database
         $sql = "SELECT * FROM student WHERE Username=:user AND Faculty_Number=:faculty_number";
         $this->selectUser = $this->connection->prepare($sql);
 
-        $selectPresentationsQuery = "SELECT Username, Theme, Type, Start_Time 
+        $selectPresentationsQuery = "SELECT Username, Theme, Type, Start_Time, Email, Faculty_Number 
                                      FROM Student_Presentation JOIN Presentation ON Ref_Presentation_ID = Presentation.ID
                                                                JOIN Student ON Ref_Student_ID = Student.ID
                                                                JOIN PresentationType ON Presentation.Presentation_Type_ID = PresentationType.ID";
@@ -63,10 +63,6 @@ class Database
                                                 JOIN PresentationType 
                                                 ON Presentation.Presentation_Type_ID = PresentationType.ID";
         $this->themes = $this->connection->prepare($getThemesQuery);
-
-        // $insertStudentsQuery = "INSERT INTO student (Email, Username, Faculty_Number, role) values ('Email=:email', 'Username=:userName', 'Faculty_Number=:faculty_number', 'role=:role')";
-        
-        // $this->insertStudents = $this->connection->prepare($insertStudentsQuery);
     }
 
     public function importStudents($query)

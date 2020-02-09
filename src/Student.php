@@ -20,11 +20,8 @@ class Student
 
     public function __construct($userName, $facultyNumber)
     {
-        // $this->email = $email;
         $this->userName = $userName;
         $this->facultyNumber = $facultyNumber;
-        // $this->role = $role;
-
         $this->db = new Database();
     }
 
