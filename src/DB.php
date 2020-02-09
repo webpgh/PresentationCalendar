@@ -7,6 +7,8 @@ class Database
     private $selectUser;
     private $selectedPresentations;
     private $themes;
+    private $availablePresentations;
+    private $insertUserPresentations;
     // private $insertStudents;
 
     public function __construct()
@@ -52,7 +54,7 @@ class Database
         $sql = "SELECT * FROM student WHERE Username=:user AND Faculty_Number=:faculty_number";
         $this->selectUser = $this->connection->prepare($sql);
 
-        $selectPresentationsQuery = "SELECT Username, Theme, Type, Start_Time, Email, Faculty_Number 
+        $selectPresentationsQuery = "SELECT Username, Theme, Type, Start_Time, End_Time, Email, Faculty_Number 
                                      FROM Student_Presentation JOIN Presentation ON Ref_Presentation_ID = Presentation.ID
                                                                JOIN Student ON Ref_Student_ID = Student.ID
                                                                JOIN PresentationType ON Presentation.Presentation_Type_ID = PresentationType.ID";
@@ -63,6 +65,22 @@ class Database
                                                 JOIN PresentationType 
                                                 ON Presentation.Presentation_Type_ID = PresentationType.ID";
         $this->themes = $this->connection->prepare($getThemesQuery);
+
+        $getAvailablePresentationsQuery = "SELECT Presentation.ID, Theme, Type 
+                                           FROM Presentation 
+                                           JOIN PresentationType ON Presentation.Presentation_Type_ID = PresentationType.ID
+                                           WHERE Presentation.ID NOT IN (SELECT Ref_Presentation_ID 
+                                                                         FROM Student_Presentation)";
+
+        $this->availablePresentations = $this->connection->prepare($getAvailablePresentationsQuery);
+        // $insertStudentsQuery = "INSERT INTO student (Email, Username, Faculty_Number, role) values ('Email=:email', 'Username=:userName', 'Faculty_Number=:faculty_number', 'role=:role')";
+        
+        // $this->insertStudents = $this->connection->prepare($insertStudentsQuery);
+
+        $insertPresentationQuery = "INSERT INTO Student_Presentation(Ref_Student_ID, Ref_Presentation_ID, Start_Time, End_Time)
+                                        VALUES (:currentUser, :presentationID, :startDate, :endDate)";
+
+        $this->insertUserPresentations = $this->connection->prepare($insertPresentationQuery);
     }
 
     public function importStudents($query)
@@ -100,7 +118,8 @@ class Database
             $result = $this->selectedPresentations->fetchAll();
 
             return array("success" => true, "data" => $result);
-        } catch (PDOException $e) {
+        } 
+        catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
             return (array("success" => false, "error" => $e->getMessage()));
         }
@@ -113,6 +132,31 @@ class Database
             $result = $this->themes->fetchAll();
 
             return array("success" => true, "data" => $result);
+        } 
+        catch (PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+            return (array("success" => false, "error" => $e->getMessage()));
+        }
+    }
+
+    public function getAvailablePresentations()
+    {
+        try {
+            $this->availablePresentations->execute();
+            $result = $this->availablePresentations->fetchAll();
+
+            return array("success" => true, "data" => $result);
+        } 
+        catch (PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+            return (array("success" => false, "error" => $e->getMessage()));
+        }
+    }
+
+    public function updateUserPresentations($data) {
+        try {
+            $this->insertUserPresentations->execute($data);
+            return array("success" => true);
         } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
             return (array("success" => false, "error" => $e->getMessage()));

@@ -3,7 +3,7 @@
     overflow: hidden;
     text-transform: capitalize;
     text-align: center;
-    font: 15px/1em inherit;
+    font: 15px / 1em inherit;
     font-weight: bolder;
     color: black;
     top: 150px;
@@ -72,7 +72,7 @@
 .calendar table {
     width: 100%;
     margin: 20px 0;
-    border-spacing: 0px;
+    border-spacing: 0;
 }
 
 .calendar thead {
@@ -212,4 +212,28 @@
     border-radius: 50%;
     background: #545a5c;
     transform: translate(-50%, -50%);
+}
+
+.insertPresentationDate {
+    float: right !important;
+    border: none;
+    background: rgba(172, 185, 201, 1) 62% !important;
+    color: black !important;
+    font-weight: 100;
+    padding: 15px;
+    margin: 5px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    display: inline-block;
+    transition: all 0.3s ease 0s;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.bottomMessage {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 10px;
 }

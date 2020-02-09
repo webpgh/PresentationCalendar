@@ -7,6 +7,8 @@
       type="text/javascript"
       src="../scripts/jquery-3.4.1.min.js"
     ></script>
+    <script type="text/javascript" src="../scripts/sharedFunctions.js"></script>
+    <script type="text/javascript" src="../scripts/exportStudents.js"></script>
     <script type="text/javascript" src="../scripts/themes.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/mainPage.css" />
     <link rel="stylesheet" type="text/css" href="../css/themes.css" />
@@ -22,6 +24,8 @@
       <div class="header">
         <a class="themesbtn" type="button" href="./calendar.html">Календар</a>
         <button class="logoutbtn" onclick="logout()">Log out</button>
+        <button id="importbtn" onclick="importStudents()">Import students</button>
+        <button id="exportbtn" onclick="exportStudents()">Export students</button>
       </div>
 
       <section>
