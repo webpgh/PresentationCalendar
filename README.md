@@ -1,1 +1,1 @@
-# PresentationCalendar
+Това е финалната версия на проекта.
