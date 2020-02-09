@@ -11,6 +11,10 @@ window.onload = (function() {
     }
 });
 
+function backToHomePage() {
+    window.location.replace("../html/calendar.html");
+}
+
 function getCookie(name) {
     var pattern = RegExp(name + "=.[^;]*")
     matched = document.cookie.match(pattern)
