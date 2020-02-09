@@ -5,10 +5,17 @@ function getPresentations(url) {
         .catch(error => console.log(error));
 }
 
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + JSON.stringify(cvalue) + ";" + expires + ";path=/";
+}
+
 function preparePresentationsForCalendar(response) {
     const presentations = JSON.parse(response).presentations;
+    setCookie("presentations", presentations, 365);
     let presentationsArrayForCalendar = [];
-
     presentations.forEach(element => {
         const startDate = new Date(element[3]);
         const presentation = {
