@@ -5,7 +5,9 @@ window.onload = (function() {
 
     if (currentUser.role == "ADMIN") {
         var importButton = document.getElementById("importbtn");
+        var exportbtn = document.getElementById("exportbtn");
         importButton.style.display = "block";
+        exportbtn.style.display = "block";
     }
 });
 

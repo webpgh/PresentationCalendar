@@ -28,7 +28,8 @@
 }
 
 .logoutbtn,
-#importbtn {
+#importbtn,
+#exportbtn {
     float: right !important;
     border: none;
     background: rgba(172, 185, 201, 1) 62% !important;
@@ -42,12 +43,14 @@
     transition: all 0.3s ease 0s;
 }
 
-#importbtn {
+#importbtn,
+#exportbtn {
     display: none;
 }
 
 .logoutbtn,
-#importbtn:hover {
+#importbtn,
+#exportbtn:hover {
     font-weight: 700 !important;
     letter-spacing: 3px;
     background: none;
