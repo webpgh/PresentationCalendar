@@ -8,6 +8,7 @@ class Database
     private $selectedPresentations;
     private $themes;
     private $availablePresentations;
+    private $insertUserPresentations;
     // private $insertStudents;
 
     public function __construct()
@@ -75,6 +76,11 @@ class Database
         // $insertStudentsQuery = "INSERT INTO student (Email, Username, Faculty_Number, role) values ('Email=:email', 'Username=:userName', 'Faculty_Number=:faculty_number', 'role=:role')";
         
         // $this->insertStudents = $this->connection->prepare($insertStudentsQuery);
+
+        $insertPresentationQuery = "INSERT INTO Student_Presentation(Ref_Student_ID, Ref_Presentation_ID, Start_Time, End_Time)
+                                        VALUES (:currentUser, :presentationID, :startDate, :endDate)";
+
+        $this->insertUserPresentations = $this->connection->prepare($insertPresentationQuery);
     }
 
     public function importStudents($query)
@@ -142,6 +148,16 @@ class Database
             return array("success" => true, "data" => $result);
         } 
         catch (PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+            return (array("success" => false, "error" => $e->getMessage()));
+        }
+    }
+
+    public function updateUserPresentations($data) {
+        try {
+            $this->insertUserPresentations->execute($data);
+            return array("success" => true);
+        } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
             return (array("success" => false, "error" => $e->getMessage()));
         }
